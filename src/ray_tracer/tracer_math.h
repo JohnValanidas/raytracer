@@ -2,8 +2,8 @@
 #define TRACER_MATH_H
 
 enum TupleType {
-	POINT,
-	VECTOR
+	VECTOR = 0,
+	POINT = 1
 };
 
 class Tuple {
@@ -14,7 +14,12 @@ class Tuple {
 		TupleType type_;
 	
 		Tuple(float x, float y, float z, TupleType type);
+
+
+		static Tuple vector(float x, float y, float z);
+		static Tuple point(float x, float t, float z);
 };
+
 
 
 #endif

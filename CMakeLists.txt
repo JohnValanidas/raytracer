@@ -11,4 +11,8 @@ project(${PROJECT_NAME} VERSION 1.0)
 # GoogleTest requires at least C++11
 set(CMAKE_CXX_STANDARD 11)
 
+
+set(RAY_TRACER_HEADERS_DIR ${PROJECT_SOURCE_DIR}/src/ray_tracer)
+
 add_subdirectory(src)
+add_subdirectory(test)

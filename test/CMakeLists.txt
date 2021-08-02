@@ -1,19 +1,12 @@
-cmake_minium_rquired(VERSION 3.10)
+cmake_minimum_required(VERSION 3.10)
+project(raytracer_tests)
 
-set(this raytracer_tests)
+add_subdirectory(lib/googletest)
 
-add_subdirectory(lib/googltest)
+include_directories(${RAY_TRACER_HEADERS_DIR})
+include_directories(lib/googletest/googletest/include)
 
-add_executable(${This} ${Sources})
+set(SOURCE_FILES main.cpp src/tracer_math_test.cpp)
 
-target_link_libraries(${This} PUBLIC
-	gtest_main
-	RayTracer	
-)
-
-
-add_test(
-	NAME ${This}
-	COMMAND ${This}	
-)
-
+add_executable(raytracer_tests ${SOURCE_FILES})
+target_link_libraries(raytracer_tests ray_tracer gtest)
