@@ -14,7 +14,8 @@ class Tuple {
 		float y_;
 		float z_;
 		TupleType type_;
-	
+		
+		Tuple();
 		Tuple(float x, float y, float z, TupleType type);
 
 		float magnitude();

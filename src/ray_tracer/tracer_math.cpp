@@ -1,5 +1,12 @@
 #include "tracer_math.h"
 
+Tuple::Tuple() {
+	x_ = 0;
+	y_ = 0;
+	z_ = 0;
+	type_ = VECTOR;
+}
+
 Tuple::Tuple(float x, float y, float z, TupleType type) {
 	x_ = x;
 	y_ = y;
@@ -58,7 +65,7 @@ float Tuple::dotProduct(const Tuple a, const Tuple b) {
 Tuple Tuple::crossProduct(const Tuple a, const Tuple b) {
 	return vector(a.y_ * b.z_ - a.z_ * b.y_,
 				  a.z_ * b.x_ - a.x_ * b.z_,
-				  a.x_ * b.y_ - a.y_ * b.x_);
+				 a.x_ * b.y_ - a.y_ * b.x_);
 }
 
 bool Tuple::equal(const Tuple a, const Tuple b) {
