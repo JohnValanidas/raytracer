@@ -32,7 +32,6 @@ Tuple Tuple::operator+(const Tuple& rhs) {
 	return Tuple(rhs.x_ + x_, rhs.y_ + y_, rhs.z_ + z_, newType);
 }
 
-
 Tuple Tuple::operator-(const Tuple& rhs) {
 	Tuple copy(x_, y_, z_, type_);
 	copy.x_ -= rhs.x_;
@@ -40,6 +39,10 @@ Tuple Tuple::operator-(const Tuple& rhs) {
 	copy.z_ -= rhs.z_;
 	copy.type_ = TupleType(copy.type_ - rhs.type_);
 	return copy;
+}
+
+Tuple Tuple::operator*(const Tuple &rhs) {
+	return Tuple(x_ * rhs.x_, y_ * rhs.y_, z_ * rhs.z_, type_);
 }
 
 
@@ -84,6 +87,10 @@ Tuple Tuple::vector(float x, float y, float z) {
 
 Tuple Tuple::point(float x, float y, float z) {
 	return Tuple(x, y, z, POINT);
+}
+
+Tuple Tuple::color(float r, float g, float b) {
+	return Tuple(r, g, b, COLOR);
 }
 
 // Non-member function overloaded operators

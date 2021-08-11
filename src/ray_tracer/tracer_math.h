@@ -5,7 +5,8 @@
 
 enum TupleType {
 	VECTOR = 0,
-	POINT = 1
+	POINT = 1,
+	COLOR = 2
 };
 
 class Tuple {
@@ -24,6 +25,7 @@ class Tuple {
 		// Operator Overloading
 		Tuple operator+(const Tuple& rhs);
 		Tuple operator-(const Tuple& rhs);
+		Tuple operator*(const Tuple& rhs);
 		Tuple operator-();
 		bool operator==(const Tuple& rhs);
 		bool operator!=(const Tuple& rhs);
@@ -33,7 +35,8 @@ class Tuple {
 		static Tuple crossProduct(const Tuple a, const Tuple b);
 		static bool equal(const Tuple a, const Tuple b);
 		static Tuple vector(float x, float y, float z);
-		static Tuple point(float x, float t, float z);
+		static Tuple point(float x, float y, float z);
+		static Tuple color(float r, float g, float b); 
 };
 
 Tuple operator*(const float scaler, const Tuple tuple);

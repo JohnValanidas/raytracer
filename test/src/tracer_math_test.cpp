@@ -217,3 +217,14 @@ TEST(TupleCrossProduct, BasicAssertions) {
 	EXPECT_NEAR(bCrossA.z_, 1, EPSILON);
 
 }
+
+
+TEST(TupleMultipleication, BasicAssertions) {
+	Tuple vector1 = Tuple::vector(1, .2, .4);
+	Tuple vector2 = Tuple::vector(0.9, 1, 0.1);
+
+	Tuple result = vector1 * vector2;
+	EXPECT_NEAR(result.x_, 0.9, EPSILON);
+	EXPECT_NEAR(result.y_, 0.2, EPSILON);
+	EXPECT_NEAR(result.z_, 0.04, EPSILON);
+}
