@@ -1,6 +1,15 @@
 # Ray Tracer Challenge
 
-# Build instructions
+# Setup
+
+## Cloneing
+Make sure too collect all associated submodules
+
+```bash
+git clone --recurse-submodules https://github.com/JohnValanidas/raytracer
+```
+
+## Build instructions
 
 ```bash
 mkdir build
