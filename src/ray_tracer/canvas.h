@@ -5,8 +5,7 @@
 #include <string>
 #include <algorithm>
 #include <fstream>
-
-const std::string CANVAS_PPM_VALUE = "P3";
+#include <iostream>
 
 class Canvas {
     public:
@@ -16,13 +15,19 @@ class Canvas {
 
         Canvas(int width, int height) : Canvas(width, height, Tuple::color(0,0,0) ) {};
         Canvas(int width, int height, Tuple defaultColor);
-        void writePixel(int x, int y, Tuple color);
-        Tuple getPixel(int x, int y);
+        ~Canvas();
+        void writePixel(int x, int y, Tuple color) const;
+        Tuple getPixel(int x, int y) const;
 
         // print to file
-        std::string constructPPMHeader();
-        std::string constructPPMPixelData();
-        void savePPMData(const std::string& filename);
+        std::string constructPPMHeader() const;
+        std::string constructPPMPixelData() const;
+        void savePPMData(const std::string& filename) const;
+
+    private:
+        const std::string CANVAS_PPM_VALUE = "P3";
+
+        static float clamp(float num, float min, float max);
 };
 
 #endif

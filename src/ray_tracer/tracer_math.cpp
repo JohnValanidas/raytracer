@@ -20,7 +20,7 @@ float Tuple::magnitude() {
 
 Tuple Tuple::normalize() {
 	float mag = magnitude();
-	return Tuple(x_/mag, y_/mag, z_/mag, type_);
+	return {x_/mag, y_/mag, z_/mag, type_};
 
 }
 
@@ -42,7 +42,7 @@ Tuple Tuple::operator-(const Tuple& rhs) {
 }
 
 Tuple Tuple::operator*(const Tuple &rhs) {
-	return Tuple(x_ * rhs.x_, y_ * rhs.y_, z_ * rhs.z_, type_);
+	return {x_ * rhs.x_, y_ * rhs.y_, z_ * rhs.z_, type_};
 }
 
 

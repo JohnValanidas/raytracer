@@ -13,8 +13,8 @@ TEST(Canvas, Constructor) {
     ASSERT_EQ(canvas.width_, 10);
     ASSERT_EQ(canvas.height_, 20);
 
-    for(int i = 0; i < 20; i++) {
-        for (int j = 0; j < 10; j++) {
+    for(int i = 0; i < 10; i++) {
+        for (int j = 0; j < 20; j++) {
             Tuple color = canvas.pixels_[i][j]; 
 
             ASSERT_EQ(color.x_, 0);
@@ -61,8 +61,8 @@ TEST(Canvas, PPMPixelData) {
     Tuple c3 = Tuple::color(-.5, 0, 1);
 
     canvas.writePixel(0, 0, c1);
-    canvas.writePixel(1, 2, c2);
-    canvas.writePixel(2, 4, c3);
+    canvas.writePixel(2, 1, c2);
+    canvas.writePixel(4, 2, c3);
     
     std::string result = canvas.constructPPMPixelData();
     std::string correctPixelData = "255 0 0 0 0 0 0 0 0 0 0 0 0 0 0 \n0 0 0 0 0 0 0 127 0 0 0 0 0 0 0 \n0 0 0 0 0 0 0 0 0 0 0 0 0 0 255 \n";
