@@ -82,15 +82,22 @@ bool Tuple::equal(const Tuple a, const Tuple b) {
 }
 
 Tuple Tuple::vector(float x, float y, float z) {
-	return Tuple(x, y, z, VECTOR);
+	return {x, y, z, VECTOR};
 }
 
 Tuple Tuple::point(float x, float y, float z) {
-	return Tuple(x, y, z, POINT);
+	return {x, y, z, POINT};
 }
 
 Tuple Tuple::color(float r, float g, float b) {
-	return Tuple(r, g, b, COLOR);
+	return {r, g, b, COLOR};
+}
+
+Tuple Tuple::hadamardProduct(Tuple color1, Tuple color2) {
+	if (color1.type_ != COLOR || color2.type_ != COLOR) {
+		throw std::invalid_argument("tuple input not of type COLOR");
+	}
+	return Tuple::color(color1.x_ * color2.x_, color1.y_ * color2.y_, color1.z_ * color2.z_);
 }
 
 // Non-member function overloaded operators

@@ -3,7 +3,7 @@
 
 const float EPSILON = 0.00001;
 
-TEST(TupleConstuctorPointTest, BasicAssertions) {
+TEST(Tuple, PointTypeConstructor) {
 	Tuple a(4.3, -4.2, 3.1, POINT);
 	EXPECT_NEAR(a.x_, 4.3, EPSILON);
 	EXPECT_NEAR(a.y_, -4.2, EPSILON);
@@ -13,7 +13,7 @@ TEST(TupleConstuctorPointTest, BasicAssertions) {
 
 
 
-TEST(TupleConstructorVectorTest, BasicAssertions) {
+TEST(Tuple, VectorTypeConstructor) {
 	Tuple b(4.5, 4.2, 3.1, VECTOR);
 	EXPECT_NEAR(b.x_, 4.5, EPSILON);
 	EXPECT_NEAR(b.y_, 4.2, EPSILON);
@@ -22,7 +22,7 @@ TEST(TupleConstructorVectorTest, BasicAssertions) {
 }
 
 
-TEST(VectorCreationTest, BasicAssertions) {
+TEST(Tuple, VectorCreationFunction) {
 	Tuple vector = Tuple::vector(1,3,5);
 	EXPECT_NEAR(vector.x_, 1, EPSILON);
 	EXPECT_NEAR(vector.y_, 3, EPSILON);
@@ -31,7 +31,7 @@ TEST(VectorCreationTest, BasicAssertions) {
 }
 
 
-TEST(PointCreationTest, BasicAssertions) {
+TEST(Tuple, PointCreationFunction) {
 	Tuple point = Tuple::point(34.453, 43, -34);
 	EXPECT_NEAR(point.x_, 34.453, EPSILON);
 	EXPECT_NEAR(point.y_, 43, EPSILON);
@@ -39,7 +39,7 @@ TEST(PointCreationTest, BasicAssertions) {
 	EXPECT_EQ(point.type_, POINT);
 }
 
-TEST(TupleAdditionException, BasicAssertions) {
+TEST(Tuple, ExceptionOnPointAdd) {
 	Tuple point1 = Tuple::point(1,5,9);
 	Tuple point2 = Tuple::point(1,1,1);
 	try {
@@ -49,12 +49,12 @@ TEST(TupleAdditionException, BasicAssertions) {
 	catch(std::invalid_argument const& error) {
 		EXPECT_EQ(error.what(), std::string("can not add points together"));
 	}
-	catch(...) {	
+	catch(...) {
 		FAIL() << "Expected std::exception";
 	}
 }
 
-TEST(TupleAdditionVectors, BasicAssertions) {
+TEST(Tuple, VectorAddition) {
 	Tuple vector1 = Tuple::vector(1,5,9);
 	Tuple vector2 = Tuple::vector(1,1,1);
 	vector1 = vector1 + vector2;
@@ -64,7 +64,7 @@ TEST(TupleAdditionVectors, BasicAssertions) {
 	EXPECT_EQ(vector1.type_, VECTOR);
 }
 
-TEST(TupleAdditionPointVector, BasicAssertions) {
+TEST(Tuple, PointVectorAddition) {
 	Tuple point = Tuple::point(1,5,9);
 	Tuple vector = Tuple::vector(1,1,1);
 	point = point + vector;
@@ -74,20 +74,20 @@ TEST(TupleAdditionPointVector, BasicAssertions) {
 	EXPECT_EQ(point.type_, POINT);
 }
 
-TEST(TupleEquality, BasicAssertions) {
+TEST(Tuple, Equailty) {
 	Tuple vector1 = Tuple::vector(1,5,9);
 	Tuple vector2 = Tuple::vector(1,1,1);
 	Tuple vector3 = Tuple::vector(1,1,1);
 	if (Tuple::equal(vector1, vector2)) {
 		FAIL() << "expect comparision to fail";
 	}
-	
+
 	if(!Tuple::equal(vector2, vector3)) {
 		FAIL() << "expected comparision to be true";
 	}
 }
 
-TEST(TupleEqualityOperatorEqual, BasicAssertions) {
+TEST(Tuple, EqualityOperator) {
 	Tuple vector1 = Tuple::vector(1,5,9);
 	Tuple vector2 = Tuple::vector(1,1,1);
 	Tuple vector3 = Tuple::vector(1,1,1);
@@ -96,7 +96,7 @@ TEST(TupleEqualityOperatorEqual, BasicAssertions) {
 	}
 }
 
-TEST(TupleEqualityOperatorNotEqual, BasicAssertions) {
+TEST(Tuple, NotEqual) {
 	Tuple vector1 = Tuple::vector(1,5,9);
 	Tuple vector2 = Tuple::vector(1,1,1);
 	Tuple vector3 = Tuple::vector(1,1,1);
@@ -105,7 +105,7 @@ TEST(TupleEqualityOperatorNotEqual, BasicAssertions) {
 	}
 }
 
-TEST(TupleSubtractionPointFromPoint, BasicAssertions) {
+TEST(Tuple, Subtraction) {
 	Tuple point1 = Tuple::point(1,5,9);
 	Tuple point2 = Tuple::point(1,1,1);
 	point1 = point1 - point2;
@@ -115,7 +115,7 @@ TEST(TupleSubtractionPointFromPoint, BasicAssertions) {
 	EXPECT_NEAR(point1.type_, 0, EPSILON);
 }
 
-TEST(TupleSubtractionVectorFromPoint, BasicAssertions) {
+TEST(Tuple, VectorPointSubtraction) {
 	Tuple point = Tuple::point(1,5,9);
 	Tuple vector = Tuple::vector(1,1,1);
 	point = point - vector;
@@ -125,7 +125,7 @@ TEST(TupleSubtractionVectorFromPoint, BasicAssertions) {
 	EXPECT_EQ(point.type_, POINT);
 }
 
-TEST(TupleSubtractionVectorFromVector, BasicAssertions) {
+TEST(Tuple, VectorSubtraction) {
 	Tuple vector = Tuple::vector(1,5,9);
 	Tuple vector2 = Tuple::vector(1,1,1);
 	vector2 = vector2 - vector;
@@ -135,7 +135,7 @@ TEST(TupleSubtractionVectorFromVector, BasicAssertions) {
 	EXPECT_EQ(vector2.type_, VECTOR);
 }
 
-TEST(TupleNegation, BasicAssertions) {
+TEST(Tuple, Negation) {
 	Tuple vector = Tuple::vector(1,-2,3);
 	vector = -vector;
 	EXPECT_NEAR(vector.x_, -1, EPSILON);
@@ -144,7 +144,7 @@ TEST(TupleNegation, BasicAssertions) {
 	EXPECT_EQ(vector.type_, VECTOR);
 }
 
-TEST(TupleMultiplicationByScaler, BasicAssertions) {
+TEST(Tuple, ScalerMultiplication) {
 	Tuple tuple = Tuple(1,2,4, POINT);
 	tuple = 5*tuple;
 	EXPECT_NEAR(tuple.x_, 5, EPSILON);
@@ -161,7 +161,7 @@ TEST(TupleMultiplicationByScaler, BasicAssertions) {
 }
 
 
-TEST(TupleDivisionByScaler, BasicAssertions) {
+TEST(Tuple, ScalerDivision) {
 	Tuple tuple = Tuple(4,2,4, POINT);
 	tuple = tuple/2;
 	EXPECT_NEAR(tuple.x_, 2, EPSILON);
@@ -170,20 +170,20 @@ TEST(TupleDivisionByScaler, BasicAssertions) {
 	EXPECT_EQ(tuple.type_, POINT);
 }
 
-TEST(TupleMagnitudePositiveValues, BasicAssertions) {
+TEST(Tuple, PositiveMagnitude) {
 	Tuple vector = Tuple::vector(1, 2, 3);
 	float result = vector.magnitude();
 	EXPECT_NEAR(result, sqrt(14), EPSILON);
 }
 
-TEST(TupleMagnitudeNegativeValues, BasicAssertions) {
+TEST(Tuple, NegativeMagnitude) {
 	Tuple vector = Tuple::vector(-1, -2, -3);
 	float magnitude = vector.magnitude();
 	EXPECT_NEAR(magnitude, sqrt(14), EPSILON);
 }
 
 
-TEST(TupleNormilization, BasicAssertions) {
+TEST(Tuple, Normalization) {
 	Tuple vector = Tuple::vector(4,5,4);
 	float vectorMagnitude = vector.magnitude();
 	Tuple normalized = vector.normalize();
@@ -193,7 +193,7 @@ TEST(TupleNormilization, BasicAssertions) {
 }
 
 
-TEST(TupleDotProduct, BasicAssertions) {
+TEST(Tuple, Dotproduct) {
 	Tuple vectorA = Tuple::vector(1,2,3);
 	Tuple vectorB = Tuple::vector(2,3,4);
 
@@ -201,13 +201,13 @@ TEST(TupleDotProduct, BasicAssertions) {
 	EXPECT_NEAR(dotProduct, 20, EPSILON);
 }
 
-TEST(TupleCrossProduct, BasicAssertions) {
+TEST(Tuple, Crossproduct) {
 	Tuple vectorA = Tuple::vector(1,2,3);
 	Tuple vectorB = Tuple::vector(2,3,4);
 
 	Tuple aCrossB = Tuple::crossProduct(vectorA, vectorB);
 	Tuple bCrossA = Tuple::crossProduct(vectorB, vectorA);
-	
+
 	EXPECT_NEAR(aCrossB.x_, -1, EPSILON);
 	EXPECT_NEAR(aCrossB.y_, 2, EPSILON);
 	EXPECT_NEAR(aCrossB.z_, -1, EPSILON);
@@ -219,12 +219,21 @@ TEST(TupleCrossProduct, BasicAssertions) {
 }
 
 
-TEST(TupleMultipleication, BasicAssertions) {
+TEST(Tuple, Multiplication) {
 	Tuple vector1 = Tuple::vector(1, .2, .4);
 	Tuple vector2 = Tuple::vector(0.9, 1, 0.1);
-
 	Tuple result = vector1 * vector2;
 	EXPECT_NEAR(result.x_, 0.9, EPSILON);
 	EXPECT_NEAR(result.y_, 0.2, EPSILON);
 	EXPECT_NEAR(result.z_, 0.04, EPSILON);
+}
+
+TEST(Tuple, HadamardProduct) {
+	Tuple color1 = Tuple::color(1, .5, .25);
+	Tuple color2 = Tuple::color(2, 2, 2);
+	Tuple result = Tuple::hadamardProduct(color1, color2);
+
+	EXPECT_NEAR(result.x_, 2, EPSILON);
+	EXPECT_NEAR(result.y_, 1, EPSILON);
+	EXPECT_NEAR(result.z_, .5, EPSILON);
 }

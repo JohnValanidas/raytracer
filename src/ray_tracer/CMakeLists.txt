@@ -4,6 +4,8 @@ project(ray_tracer C CXX)
 set(SOURCE_FILES
     tracer_math.h
     tracer_math.cpp
+    canvas.h
+    canvas.cpp
 )
 
 add_library(ray_tracer SHARED STATIC ${SOURCE_FILES})

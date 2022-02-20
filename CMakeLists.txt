@@ -14,5 +14,7 @@ set(CMAKE_CXX_STANDARD 11)
 
 set(RAY_TRACER_HEADERS_DIR ${PROJECT_SOURCE_DIR}/src/ray_tracer)
 
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build/bin)
+
 add_subdirectory(src)
 add_subdirectory(test)

@@ -37,6 +37,7 @@ class Tuple {
 		static Tuple vector(float x, float y, float z);
 		static Tuple point(float x, float y, float z);
 		static Tuple color(float r, float g, float b); 
+		static Tuple hadamardProduct(Tuple c1, Tuple c2);
 };
 
 Tuple operator*(const float scaler, const Tuple tuple);
