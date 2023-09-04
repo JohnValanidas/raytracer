@@ -7,3 +7,12 @@ edition = "2021"
 
 [dependencies]
 approx = "0.5.1"
+
+[lib]
+name = "tuple"
+path = "src/tuple.rs"
+
+[[bin]]
+name = "projectile"
+path = "src/projectile.rs"
+
