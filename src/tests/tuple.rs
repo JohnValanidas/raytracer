@@ -1,4 +1,4 @@
-use crate::Tuple;
+use crate::tuple::{Tuple, TupleKind};
 
 #[cfg(test)]
 mod tests {
@@ -181,7 +181,7 @@ mod tests {
 
     #[test]
     fn test_dot_product() {
-        let vector1 = Tuple::vector(1., 2., 3.)                         ;
+        let vector1 = Tuple::vector(1., 2., 3.); 
         let vector2 = Tuple::vector(2., 3., 4.);
 
         let dot_product = Tuple::dot_product(&vector1, &vector2);
@@ -191,7 +191,7 @@ mod tests {
 
     #[test]
     fn test_cross_product() {
-        let vector1 = Tuple::vector(1., 2., 3.)                         ;
+        let vector1 = Tuple::vector(1., 2., 3.);
         let vector2 = Tuple::vector(2., 3., 4.);
     
         let cross_product = Tuple::cross_product(&vector1, &vector2);
@@ -199,5 +199,30 @@ mod tests {
         assert_eq!(cross_product.x, -1.);
         assert_eq!(cross_product.y, 2.);
         assert_eq!(cross_product.z, -1.);
+    }
+
+
+    #[test]
+    fn test_color_type() {
+        let color = Tuple::color(1., 3., 3.);                         
+        assert_eq!(color.w, TupleKind::Color);
+    }
+
+    #[test]
+    fn test_color() {
+        let color = Tuple::color(1., 3., 3.); 
+        assert_eq!(color.x, 1.);
+        assert_eq!(color.y, 3.);
+        assert_eq!(color.z, 3.);
+    }
+
+    #[test]
+    fn test_hadamard_product() {
+        let color1 = Tuple::color(1., 3., 3.); 
+        let color2 = Tuple::color(1., 3., 3.);
+        let product = Tuple::hadamard_product(&color1, &color2);
+        assert_eq!(product.x, 1.);
+        assert_eq!(product.y, 9.);
+        assert_eq!(product.z, 9.);
     }
 }

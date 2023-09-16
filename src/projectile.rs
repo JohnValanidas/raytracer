@@ -1,4 +1,4 @@
-use tuple::Tuple;
+use raytracer::tuple::Tuple;
 
 struct Projectile {
     position: Tuple,
