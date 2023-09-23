@@ -6,10 +6,11 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_canvas() {
+    fn test_canvas_creation() {
         let canvas = Canvas::new(20,40);
-        assert_eq!(canvas.grid[0].len(), 40);
-        assert_eq!(canvas.grid.len(), 20);
+
+        assert_eq!(canvas.width(), 20);
+        assert_eq!(canvas.height(), 40);
 
         for row in canvas.grid {
             for cell in row {
@@ -26,7 +27,7 @@ mod tests {
         let pixel  = Tuple::color(5.,4.,4.);
         canvas.write_pixel(4, 10, pixel);
 
-        assert_eq!(canvas.grid[4][10], pixel);
+        assert_eq!(canvas.grid[10][4], pixel);
     }
     #[test]
     fn test_ppm_file_header() {
